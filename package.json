@@ -1,0 +1,55 @@
+{
+  "_from": "ibili",
+  "_id": "ibili@1.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-lPhzs9nlodICa1W23IEi9nttUoVH/gYwzhDpKVaPdJU4c3KS25NUb/DBObHq66mOhNZC2SV67ZOX7KR6Lcv9Dg==",
+  "_location": "/ibili",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ibili",
+    "name": "ibili",
+    "escapedName": "ibili",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ibili/-/ibili-1.0.3.tgz",
+  "_shasum": "3d53cea552da37f1c4994c3df9f51a2a853a6f37",
+  "_spec": "ibili",
+  "_where": "/Users/sataniya/Desktop/自己的库/ibili",
+  "author": {
+    "name": "sataniya"
+  },
+  "bugs": {
+    "url": "https://github.com/shataniya/ibili/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "single-line-log": "^1.1.2",
+    "websect": "^1.1.2"
+  },
+  "deprecated": false,
+  "description": "Download the barrage and video from bilibili",
+  "homepage": "https://github.com/shataniya/ibili#readme",
+  "keywords": [
+    "ibili",
+    "bilibili"
+  ],
+  "license": "ISC",
+  "main": "ibili.js",
+  "name": "ibili",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shataniya/ibili.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.6"
+}

@@ -131,8 +131,15 @@ const ibili = (function(){
         getavByepurl:function(epurl){
             return new Promise((resolve,reject)=>{
                 $.get(epurl).then(res=>{
-                    $(res.uncompress().toString()).find("a.av-link").each(el=>{
+                    var htmlstr = res.uncompress().toString()
+                    $(htmlstr).find("a.av-link").each(el=>{
                         var av = el.innerHTML.replace("AV","")
+                        // "aid":70158079,"bvid":"BV1aE411D7fp"
+                        var reg = new RegExp('"aid":(\\d+?),"bvid":"'+av+'"', 'g')
+                        // console.log(reg)
+                        htmlstr.replace(reg, function(match, key){
+                            av = key
+                        })
                         resolve(av)
                     })
                 })

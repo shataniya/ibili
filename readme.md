@@ -1,4 +1,4 @@
-#### ibili
+# ibili
 - 下载方式: npm i ibili
 - 这是一个获取哔哩哔哩资源的工具库，可以下载哔哩哔哩的视频资源，也可以下载视频弹幕，下载用户评论等等之类
 - `严重警告`：不可以将获取的资源用于恶意用途
@@ -31,7 +31,7 @@
     </tr>
 </table>
 
-<b>loadbarrage：下载视频弹幕</b>
+# loadbarrage：下载视频弹幕
 
 <table>
     <tr>
@@ -111,7 +111,7 @@ ok
 ```
 - 下载整部番剧的弹幕数据用时比较长，实际上num可以是任意值，但是要满足 num <= 总集数
 
-<b>downloadVideo：下载视频资源</b>
+# downloadVideo：下载视频资源
 
 <table>
     <tr>
@@ -231,8 +231,7 @@ ibili.downloadVideo({
     console.log('番剧下载完成！')
 })
 ```
-
-<b>loademojis：下载表情包</b>
+# loademojis：下载表情包
 <table>
     <tr>
         <th align='center'>参数</th>
@@ -257,7 +256,7 @@ ibili.loademojis({}).then(()=>{
 })
 ```
 
-<b>loadcomments: 获取视频下的评论</b>
+# loadcomments: 获取视频下的评论
 
 <table>
     <tr>
@@ -372,7 +371,7 @@ ibili.loadcomments({
     })
 })
 ```
-<b>loadsearch: 获取搜索结果</b>
+# loadsearch: 获取搜索结果
 
 <table>
     <tr>

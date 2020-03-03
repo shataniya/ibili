@@ -139,7 +139,7 @@ ok
     <tr>
         <td align='center'>num</td>
         <td align='center'>number</td>
-        <td align='center'>番剧的集数，这个属性只对 <b>番剧</b> 有效</td>
+        <td align='center'>番剧的集数，这个属性只对 <b>番剧</b> 有效【不建议使用】</td>
     </tr>
     <tr>
         <td align='center'>sessdata</td>
@@ -215,10 +215,9 @@ ibili.downloadVideo({
 ```javascript
 const ibili = require('ibili')
 ibili.downloadVideo({
-    url:'https://www.bilibili.com/bangumi/play/ep63865', // 番剧的第一集播放地址
+    url:'https://www.bilibili.com/bangumi/media/md2614/?from=search&seid=6486386251028162043', // 番剧地址
     folder:'media/群居姐妹', // 将视频资源存放在 media文件夹下的 群居姐妹 文件夹里
-    sessdata:'b6714909%2C158***3693%2C1a29f0c1', // 使用 sessdata，这样可以下载 1080p的视频
-    num:12 // 番剧的总集数
+    sessdata:'b6714909%2C158***3693%2C1a29f0c1', // 使用 sessdata，这样可以下载 1080p的视频【没有sessdata会默认是320p】
 }).then(()=>{
     console.log('番剧下载完成！')
 })

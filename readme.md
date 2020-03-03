@@ -211,7 +211,7 @@ ibili.downloadVideo({
 })
 ```
 - 同样也可以使用av号下载视频资源
-- 还可以下载整部番剧的视频资源,比如下载 [群居姐妹](https://www.bilibili.com/bangumi/media/md2614/?from=search&seid=7234801519883525570)整部番剧，首先要知道番剧第一集的播放地址（url），还有整部番剧的总集数（num）
+- 还可以下载整部番剧的视频资源,比如下载 [群居姐妹](https://www.bilibili.com/bangumi/media/md2614/?from=search&seid=7234801519883525570)整部番剧，番剧地址为`https://www.bilibili.com/bangumi/media/md2614/?from=search&seid=6486386251028162043`
 ```javascript
 const ibili = require('ibili')
 ibili.downloadVideo({

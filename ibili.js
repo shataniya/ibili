@@ -397,15 +397,29 @@ const ibili = (function(){
                     if(Array.isArray(videourl)){
                         var vls = videourl
                         var len = vls.length
+                        var isbangumi = false // 默认不是番剧
+                        if(!__names){
+                            // 说明不是番剧
+                            // console.log(vls)
+                            __names = []
+                            vls.forEach(el=>{
+                                __names.push(el.match(/av\d+/g)[0])
+                            })
+                        }else{
+                            // 说明是番剧
+                            isbangumi = true
+                        }
                         function __dealurl(index){
                             if(index >= len){
                                 resolve("finish")
                                 return
                             }
-                            if(__names){
+                            if(isbangumi){
+                                // 说明是番剧
                                 opt.filename = `第${index+1}集_${__names[index]}`
                             }else{
-                                opt.filename = `第${index+1}集`
+                                // 说明不是番剧
+                                opt.filename = __names[index]
                             }
                             var videourl = vls[index]
                             opt.url = videourl

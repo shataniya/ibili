@@ -49,14 +49,9 @@
         <td align='center'>返回promise对象</td>
     </tr>
     <tr>
-        <td align='center' rowspan='2'>object</td>
+        <td align='center'>object</td>
         <td align='center'>url</td>
-        <td align='center'>视频的直播地址</td>
-        <td align='center'>返回promise对象</td>
-    </tr>
-    <tr>
-        <td align='center'>num</td>
-        <td align='center'>番剧的集数，这个属性只对 <b>番剧</b> 有效</td>
+        <td align='center'>视频的直播地址, 也可以是番剧的地址</td>
         <td align='center'>返回promise对象</td>
     </tr>
 </table>
@@ -88,13 +83,12 @@ ibili.loadbarrage('51560305').then(function(data){
     })
 })
 ```
-- 比如要下载整部番剧的弹幕，以 [刀剑神域 Alicization](https://www.bilibili.com/bangumi/media/md130412) 为例，要下载整部番剧的弹幕数据的话可以这样，首先要知道番剧的第一集的播放地址（url），然后要知道整部番剧的总集数（num）是多少
+- 比如要下载整部番剧的弹幕，以 [刀剑神域 Alicization](https://www.bilibili.com/bangumi/media/md130412) 为例，可以知道番剧的地址为`https://www.bilibili.com/bangumi/media/md130412`
 ```javascript
 const ibili = require('ibili')
 const fs = require('fs')
 ibili.loadbarrage({
-    url:'https://www.bilibili.com/bangumi/play/ep250536', // 番剧的第一集的播放地址
-    num:24 // 番剧的总集数
+    url:'https://www.bilibili.com/bangumi/media/md130412'
 }).then(function(data){
     var merges = data.merge_barrages // 获取合并之后的弹幕
     console.log(merges.length) // 打印弹幕的总条数
@@ -106,10 +100,8 @@ ibili.loadbarrage({
 
 // 打印结果
 75301 // 可以看到整部番剧的弹幕有75301条
-15443 // 下载整部番剧的弹幕用时 15秒
 ok
 ```
-- 下载整部番剧的弹幕数据用时比较长，实际上num可以是任意值，但是要满足 num <= 总集数
 
 # downloadVideo：下载视频资源
 

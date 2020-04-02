@@ -7,6 +7,7 @@ const { createfolder,formateVideoComments,formateVideoCommentsMajoy,formateComme
 const path = require("path")
 const httpio = require("./httpio")
 const fs = require("fs")
+const _ = require('reero')
 // const request = require("request")
 // const httpio = require("./httpio")
 // const http = require("http")
@@ -174,6 +175,12 @@ const ibili = (function(){
                         resolve(av)
                     })
                 }
+                // 判断是不是视频地址
+                if(this.isbvidurl(url)){
+                    this.get_aid_by_bvidurl(url).then(aid=>{
+                        resolve(aid)
+                    })
+                }
             })
         },
         // 判断是不是番剧的播放地址
@@ -185,6 +192,52 @@ const ibili = (function(){
         },
         ismdurl:function(url){
             return /md\d+/g.test(url)
+        },
+        // 2020-04-02新增的代码
+        isbvidurl: function(url){
+            return /video\/BV/g.test(url)
+        },
+        get_bvid: function(url){
+            if(this.isbvidurl(url)){
+                return url.match(/\/([^/]+?)\?/)[1]
+            }else{
+                throw new Error('is not bvid url...')
+            }
+        },
+        get_cid: function(bvid){
+            return new Promise((resolve, reject)=>{
+                _('https://api.bilibili.com/x/player/pagelist?bvid='+bvid+'&jsonp=jsonp').then(response=>{
+                    var cid = JSON.parse(response.text).data[0].cid
+                    resolve(cid)
+                })
+            })
+        },
+        get_cid_by_bvidurl: function(bvidurl){
+            var bvid = this.get_bvid(bvidurl)
+            return new Promise((resolve, reject)=>{
+                this.get_cid(bvid).then(cid=>{
+                    resolve(cid)
+                })
+            })
+        },
+        get_view_by_bvidurl: function(bvidurl){
+            var bvid = this.get_bvid(bvidurl)
+            return new Promise((resolve, reject)=>{
+                this.get_cid(bvid).then(cid=>{
+                    var cid = cid
+                    _('https://api.bilibili.com/x/web-interface/view?cid='+cid+'&bvid='+bvid).then(response=>{
+                        var data = JSON.parse(response.text).data
+                        resolve(data)
+                    })
+                })
+            })
+        },
+        get_aid_by_bvidurl: function(bvidurl){
+            return new Promise((resolve, reject)=>{
+                this.get_view_by_bvidurl(bvidurl).then(view=>{
+                    resolve(view.aid)
+                })
+            })
         },
         /* 
         * @function getVideoAddressByurl
@@ -1229,7 +1282,7 @@ const ibili = (function(){
        * @return media_id
        */
         get_mid_by_url:function(url){
-            return url.match(/md(.*?)\//)[1]
+            return url.match(/md(\d+)/)[1]
         },
         get_sid_by_mid:function(mid){
             var ul = 'https://api.bilibili.com/pgc/review/user?media_id=' + mid

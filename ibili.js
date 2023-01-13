@@ -199,7 +199,7 @@ const ibili = (function(){
         },
         get_bvid: function(url){
             if(this.isbvidurl(url)){
-                return url.match(/\/([^/]+?)\?/)[1]
+                return url.match(/BV?(\w*)/)[0]
             }else{
                 throw new Error('is not bvid url...')
             }
